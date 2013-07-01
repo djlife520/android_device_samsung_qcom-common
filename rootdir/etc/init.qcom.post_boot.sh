@@ -422,7 +422,7 @@ chmod 666 /dev/adsprpc-smd
 # BaseBand Fix Version
 device=`getprop ro.mk.device`
 case "$device" in
-     "SHV-E120L")
+     "SHV-E120L" | "e120l")
     setprop gsm.version.baseband `dd if=/dev/block/mmcblk0p17 bs=128000 count=10 | strings | grep -- "M9600B" | head -1`
      ;;
 esac
