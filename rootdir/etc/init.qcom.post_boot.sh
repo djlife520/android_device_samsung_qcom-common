@@ -418,3 +418,11 @@ esac
 insmod /system/lib/modules/adsprpc.ko
 chown system.system /dev/adsprpc-smd
 chmod 666 /dev/adsprpc-smd
+
+# BaseBand Fix
+device=`getprop ro.mk.device`
+case "$device" in
+     "SHV-E120L")
+setprop gsm.version.baseband `dd if=/dev/block/mmcblk0p17 bs=128000 count=10 | strings | grep -- "M9600B" | head -1`
+     ;;
+esac
